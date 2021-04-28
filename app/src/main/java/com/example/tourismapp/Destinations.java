@@ -1,10 +1,10 @@
 package com.example.tourismapp;
 
-public class destinations {
+public class Destinations {
     private int image;
     private String location, description;
 
-    public destinations(int id, int image, String location, String description) {
+    public Destinations(int id, int image, String location, String description) {
         this.image = image;
         this.location = location;
         this.description = description;

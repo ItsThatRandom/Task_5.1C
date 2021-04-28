@@ -12,13 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class verticalAdapter extends RecyclerView.Adapter<verticalAdapter.verticalViewHolder> {
-    private List<destinations> destinationList;
+public class VerticalAdapter extends RecyclerView.Adapter<VerticalAdapter.VerticalViewHolder> {
+    private List<Destinations> destinationList;
     private Context context;
+
     private OnDestinationListener clickListener;
 
     // Basic constructor
-    public verticalAdapter(List<destinations> destinationList, Context context, OnDestinationListener destinationListener) {
+    public VerticalAdapter(List<Destinations> destinationList, Context context, OnDestinationListener destinationListener) {
         this.destinationList = destinationList;
         this.context = context;
         this.clickListener = destinationListener;
@@ -27,14 +28,14 @@ public class verticalAdapter extends RecyclerView.Adapter<verticalAdapter.vertic
     // Uses the vertical destinations layout.
     @NonNull
     @Override
-    public verticalViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public VerticalViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(context).inflate(R.layout.vertical_destinations, parent, false);
-        return new verticalViewHolder(itemView);
+        return new VerticalViewHolder(itemView);
     }
 
     // Binds the images from destinationList.
     @Override
-    public void onBindViewHolder(@NonNull verticalViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull VerticalViewHolder holder, int position) {
         holder.destinationImageView.setImageResource(destinationList.get(position).getImage());
         holder.locationTextView.setText(destinationList.get(position).getLocation());
         holder.descriptionTextView.setText(destinationList.get(position).getDescription());
@@ -47,12 +48,12 @@ public class verticalAdapter extends RecyclerView.Adapter<verticalAdapter.vertic
     }
 
     // VerticalViewHolder class
-    public class verticalViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class VerticalViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public ImageView destinationImageView;
         public TextView  locationTextView, descriptionTextView;
 
         // Basic constructor, also sets onclick listener.
-        public verticalViewHolder(@NonNull View itemView) {
+        public VerticalViewHolder(@NonNull View itemView) {
             super(itemView);
             destinationImageView = itemView.findViewById(R.id.destinationImageView);
             locationTextView = itemView.findViewById(R.id.locationTextView);

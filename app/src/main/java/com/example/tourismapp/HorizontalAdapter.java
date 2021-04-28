@@ -11,12 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class horizontalAdapter extends RecyclerView.Adapter<horizontalAdapter.horizontalViewHolder> {
-    private List<destinations> destinationList;
+public class HorizontalAdapter extends RecyclerView.Adapter<HorizontalAdapter.HorizontalViewHolder> {
+    private List<Destinations> destinationList;
     private Context context;
 
     // Basic constructor
-    public horizontalAdapter(List<destinations> destinationList, Context context) {
+    public HorizontalAdapter(List<Destinations> destinationList, Context context) {
         this.destinationList = destinationList;
         this.context = context;
     }
@@ -24,14 +24,14 @@ public class horizontalAdapter extends RecyclerView.Adapter<horizontalAdapter.ho
     // Uses the horizontal destinations layout.
     @NonNull
     @Override
-    public horizontalViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public HorizontalViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(context).inflate(R.layout.horizontal_destinations, parent, false);
-        return new horizontalViewHolder(itemView);
+        return new HorizontalViewHolder(itemView);
     }
 
     // Binds the images from destinationList.
     @Override
-    public void onBindViewHolder(@NonNull horizontalViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull HorizontalViewHolder holder, int position) {
         holder.destinationImageView.setImageResource(destinationList.get(position).getImage());
     }
 
@@ -41,10 +41,10 @@ public class horizontalAdapter extends RecyclerView.Adapter<horizontalAdapter.ho
         return destinationList.size();
     }
 
-    public class horizontalViewHolder extends RecyclerView.ViewHolder {
+    public class HorizontalViewHolder extends RecyclerView.ViewHolder {
         public ImageView destinationImageView;
 
-        public horizontalViewHolder(@NonNull View itemView) {
+        public HorizontalViewHolder(@NonNull View itemView) {
             super(itemView);
             destinationImageView = itemView.findViewById(R.id.destinationImageViewH);
         }

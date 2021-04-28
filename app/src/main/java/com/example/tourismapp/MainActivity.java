@@ -10,19 +10,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements com.example.tourismapp.verticalAdapter.OnDestinationListener {
+public class MainActivity extends AppCompatActivity implements com.example.tourismapp.VerticalAdapter.OnDestinationListener {
 
     RecyclerView verticalRecyclerView;
-    verticalAdapter verticalAdapter;
+    VerticalAdapter VerticalAdapter;
     RecyclerView horizontalRecyclerView;
-    horizontalAdapter horizontalAdapter;
-    List<destinations> destinationsList = new ArrayList<>();
+    HorizontalAdapter horizontalAdapter;
+    List<Destinations> destinationsList = new ArrayList<>();
 
     Integer[] imageList = {R.drawable.abu_dhabi, R.drawable.alberta, R.drawable.indonesia, R.drawable.morocco, R.drawable.paris, R.drawable.pisa};
     String[] locationList = {"United Arab Emirates", "Canada", "Indonesia", "Morocco", "France", "Italy"};
@@ -35,14 +33,14 @@ public class MainActivity extends AppCompatActivity implements com.example.touri
 
         // Vertical Recycler setup
         verticalRecyclerView = findViewById(R.id.verticalRecycler);
-        verticalAdapter = new verticalAdapter(destinationsList, MainActivity.this, this);
-        verticalRecyclerView.setAdapter(verticalAdapter);
+        VerticalAdapter = new VerticalAdapter(destinationsList, MainActivity.this, this);
+        verticalRecyclerView.setAdapter(VerticalAdapter);
         RecyclerView.LayoutManager verticalLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         verticalRecyclerView.setLayoutManager(verticalLayoutManager);
 
         // Horizontal Recycler setup
         horizontalRecyclerView = findViewById(R.id.horizontalRecycler);
-        horizontalAdapter = new horizontalAdapter(destinationsList, MainActivity.this);
+        horizontalAdapter = new HorizontalAdapter(destinationsList, MainActivity.this);
         horizontalRecyclerView.setAdapter(horizontalAdapter);
         RecyclerView.LayoutManager horizontalLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         horizontalRecyclerView.setLayoutManager(horizontalLayoutManager);
@@ -50,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements com.example.touri
         // Combines lists of images, locations and descriptions into destinationsList.
         for (int i = 0; i < imageList.length; i++)
         {
-            destinations destinations = new destinations(i, imageList[i], locationList[i], descriptionList[i]);
+            Destinations destinations = new Destinations(i, imageList[i], locationList[i], descriptionList[i]);
             destinationsList.add(destinations);
         }
     }
